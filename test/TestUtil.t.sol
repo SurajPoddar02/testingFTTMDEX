@@ -31,7 +31,7 @@ contract TestUtil is Test {
 
     function testSetUp(uint8 _case) public {
         dao = new DAO(UFTTTokenOwner, votingDuration);
-        tokenFTTM = dpeloyLiquidTimeToken("LiquidTimeToken", "LTT", address(dao));
+        tokenFTTM = deployLiquidTimeToken("LiquidTimeToken", "LTT", address(dao));
 
         if (_case == 1) {
             staking = deployTimeTokenStaking(address(tokenFTTM));
@@ -40,7 +40,7 @@ contract TestUtil is Test {
         }
     }
 
-    function dpeloyLiquidTimeToken(
+    function deployLiquidTimeToken(
         string memory _name,
         string memory _symbol,
         address _dao

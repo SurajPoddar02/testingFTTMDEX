@@ -13,7 +13,7 @@ contract FTTMDEX is Ownable {
     // The last exchange rate used when the tokens minter adds new FTTM on the primary market.
     uint256 public lastExchangeRate;
     uint256 public primaryMarketExchangeRate; // Defined as tokenCash per tokenFTTM
-    address FTTMTokenOwner;
+    address public FTTMTokenOwner;
 
     event liquidityProvided(uint256 indexed amountFTTMIn, uint256 indexed amountCashIn);
     event liquidityWithdrawn(uint256 indexed amountFTTMOut, uint256 indexed amountCashOut);
@@ -194,4 +194,11 @@ contract FTTMDEX is Ownable {
 
         emit soldFTTMSecondaryMarket(amountFTTM, amountCash);
     }
+    function getTokenFTTMAmountByAddress(address) public view returns (uint256) {
+        return liquidityProviders[FTTMTokenOwner].tokenFTTMAmount;
+    }
+    function getTokenCashAmountByAddress(address) public view returns (uint256) {
+        return liquidityProviders[FTTMTokenOwner].tokenCashAmount;
+    }
+    
 }
